@@ -54,6 +54,17 @@ class PokerTest extends PHPUnit_Framework_TestCase
 		$this->assertTrue($ranking->areCardsAllSameSuit($blackHand["black"]));
 	}
 
+	public function testRoyalFlush()
+	{
+		$whiteHand = array("white"=>array("AD","2D","3D","8D"));
+		
+		$ranking = new Ranking();
+		$actual = $ranking->isRoyalFlush($whiteHand["white"]);	
+
+		$this->assertFalse($actual);
+		
+	}
+
 	public function hands()
 	{
 		return array(

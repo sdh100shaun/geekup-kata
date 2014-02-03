@@ -18,13 +18,32 @@ class Ranking
 
     public function isRoyalFlush($hand)
     {
-        $sameSuit = false;
+        $sameSuit = $this->areCardsAllSameSuit($hand);
 
-        foreach ($hand as $card)
+        if($sameSuit)
         {
-            echo $card;
+         
+          foreach($hand as $card){
+
+               if(!in_array(substr($card, 0,1),$this->royalFlush))
+                {
+                    return false;
+                };
+            } 
+            
+
+          
+          
         }
+        else
+        {
+            return false;
+        }
+        
+        return true;
+
     }
+
 
     public function findMatchingHands($hand)
     {
@@ -46,8 +65,7 @@ class Ranking
 
             $suit = substr($cards, 1);
 
-            //echo $suit;
-
+            
             if ($previousSuit == "")
             {
                 $previousSuit = $suit;
