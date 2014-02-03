@@ -39,24 +39,26 @@ class Ranking
 
     public function areCardsAllSameSuit($hand)
     {
-        $allSameSuit = 1;
+        $allSameSuit = true;
         $previousSuit = "";
 
-            foreach ($hand as $cards)
+            foreach ($hand as $cards){
 
             $suit = substr($cards, 1);
 
-            echo $suit;
+            //echo $suit;
 
-            if ($suit == "")
+            if ($previousSuit == "")
             {
                 $previousSuit = $suit;
             }
             else
             {
+                
                 if ($previousSuit != $suit)
                 {
-                    return 0;
+
+                    return false;
                 }
             }
         }

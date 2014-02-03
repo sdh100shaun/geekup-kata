@@ -1,6 +1,6 @@
 <?php 
 include_once '../src/Poker.php'; 
-
+include_once '../index.php'; 
 class PokerTest extends PHPUnit_Framework_TestCase
 {
 
@@ -32,12 +32,26 @@ class PokerTest extends PHPUnit_Framework_TestCase
 		$blackHand = array("black"=>$this->hands()["black"][0]);
 		$whiteHand = array("white"=>$this->hands()["white"][0]);
 		
-		$hands = array_merge($blackHand,$whiteHand);
+		//$hands = array_merge($blackHand,$whiteHand);
 
 		
+		
+		$ranking = new Ranking();
+		$this->assertFalse($ranking->areCardsAllSameSuit($whiteHand["white"]));
+	}
 
-		$ranking = new Ranking()
-		$this->assertFalse($ranking->areCardsAllSameSuit($hands));
+	public function testSameSuitTrueWhenSameSuit()
+	{
+		$blackHand = array("black"=>array("AD","2D","3D","8D"));
+		$whiteHand = array("white"=>array("AD","2D","3D","8D"));
+		
+		//$hands = array_merge($blackHand,$whiteHand);
+
+		var_dump($blackHand["black"]);
+		
+
+		$ranking = new Ranking();
+		$this->assertTrue($ranking->areCardsAllSameSuit($blackHand["black"]));
 	}
 
 	public function hands()
